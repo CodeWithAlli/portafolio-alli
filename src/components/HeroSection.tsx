@@ -34,7 +34,7 @@ const HeroSection = () => {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card/50 text-sm text-muted-foreground mb-6"
             >
               <Code2 size={14} className="text-primary" />
-              <span>Desarrolladora de Software | Frontend & Backend</span>
+              <span>React • TypeScript • FastAPI • Machine Learning</span>
             </motion.div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-4">
@@ -43,7 +43,7 @@ const HeroSection = () => {
             </h1>
 
             <p className="text-lg sm:text-xl font-mono text-primary mb-6">
-              React • TypeScript • FastAPI • Machine Learning
+              Desarrolladora de Software | Frontend & Backend
             </p>
 
             <p className="text-muted-foreground text-base sm:text-lg max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed">

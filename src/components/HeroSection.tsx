@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Code2 } from "lucide-react";
 import profilePhoto from "@/assets/programadora.jpg";
+import cambioPhoto from "@/assets/CodeWhithAlli.jpg";
+import { useEffect, useState } from "react";
 
 const HeroSection = () => {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -11,6 +13,16 @@ const HeroSection = () => {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  const images = [profilePhoto, cambioPhoto];
+  const [currentImage, setCurrentImage] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % images.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section id="inicio" className="relative min-h-screen flex items-center section-padding pt-32 overflow-hidden">
@@ -52,14 +64,14 @@ const HeroSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-              <a 
+              <a
                 href="#proyectos"
                 onClick={(e) => handleNavClick(e, "#proyectos")}
                 className="gradient-bg text-primary-foreground px-8 py-3.5 rounded-xl font-semibold text-sm hover:opacity-90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0"
               >
                 Ver mis proyectos
               </a>
-              <a 
+              <a
                 href="#contacto"
                 onClick={(e) => handleNavClick(e, "#contacto")}
                 className="border border-border/50 bg-card/80 backdrop-blur-sm text-foreground px-8 py-3.5 rounded-xl font-semibold text-sm hover:border-primary hover:bg-primary/5 hover:shadow-md transition-all hover:-translate-y-0.5 active:translate-y-0"
@@ -71,22 +83,17 @@ const HeroSection = () => {
 
           {/* Photo */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="flex-shrink-0"
+            key={currentImage}
+            initial={{ rotateY: 90, opacity: 0 }}
+            animate={{ rotateY: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            className="w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl"
           >
-            <div className="relative">
-              <div className="w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl" style={{ boxShadow: "var(--shadow-glow)" }}>
-                <img 
-                  src={profilePhoto} 
-                  alt="Allison More - Desarrolladora Full Stack" 
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" 
-                />
-              </div>
-              {/* Decorative ring */}
-              <div className="absolute -inset-4 rounded-full border border-primary/10 animate-float" />
-            </div>
+            <img
+              src={images[currentImage]}
+              alt="Allison More - Desarrolladora Full Stack"
+              className="w-full h-full object-cover"
+            />
           </motion.div>
         </div>
 
@@ -97,8 +104,8 @@ const HeroSection = () => {
           transition={{ delay: 1.2 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block"
         >
-          <a 
-            href="#sobre-mi" 
+          <a
+            href="#sobre-mi"
             onClick={(e) => handleNavClick(e, "#sobre-mi")}
             className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110"
           >

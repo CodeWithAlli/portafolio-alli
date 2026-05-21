@@ -4,8 +4,23 @@ import { ExternalLink, Github } from "lucide-react";
 import projectAbogado from "@/assets/project-abogado.jpg";
 import projectAutoland from "@/assets/project-autoland.jpg";
 import projectDashboard from "@/assets/project-dashboard.jpg";
+import projectAuraSpa from "@/assets/project-aura-spa.jpg";
 
 const projects = [
+  {
+    title: "Aura Spa – Santuario de Bienestar",
+    featured: true,
+    description:
+      "Sitio web para un spa de lujo en Lima, con presentación de servicios de bienestar, tratamientos faciales, masajes y reservas.",
+    challenge:
+      "Transmitir una estética sofisticada y relajante que refleje la identidad premium del spa y genere confianza en el usuario.",
+    result:
+      "Se logró una experiencia visual elegante con paleta natural y navegación fluida que invita al usuario a explorar los servicios.",
+    tech: ["React", "Tailwind", "TypeScript", "Vercel"],
+    image: projectAuraSpa,
+    github: "https://github.com/CodeWithAlli",
+    demo: "https://aura-spa-frontend.vercel.app/",
+  },
   {
     title: "Página web para staff de abogados",
     featured: true,

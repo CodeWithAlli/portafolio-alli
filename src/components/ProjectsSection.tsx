@@ -5,8 +5,23 @@ import projectAbogado from "@/assets/project-abogado.jpg";
 import projectAutoland from "@/assets/project-autoland.jpg";
 import projectDashboard from "@/assets/project-dashboard.jpg";
 import projectAuraSpa from "@/assets/project-aura-spa.jpg";
+import projectONPE from "@/assets/project-onpe.jpg";
 
 const projects = [
+  {
+    title: "Sistema de Gestión Electoral ONPE",
+    featured: true,
+    description:
+      "Plataforma web para la administración de procesos electorales, gestión de padrón electoral, usuarios, auditoría y estadísticas en tiempo real.",
+    challenge:
+      "Diseñar una arquitectura segura y escalable utilizando Supabase, Edge Functions y control de acceso basado en roles para garantizar la integridad de la información electoral.",
+    result:
+      "Se implementó un sistema centralizado capaz de gestionar procesos electorales completos con trazabilidad, auditoría y generación de reportes administrativos.",
+    tech: ["React", "TypeScript", "Tailwind", "Supabase", "Edge Functions", "PostgreSQL"],
+    image: projectONPE,
+    github: "https://github.com/CodeWithAlli/onpe-votaciones",
+    demo: "https://onpe-votaciones.vercel.app/votar",
+  },
   {
     title: "Aura Spa – Santuario de Bienestar",
     featured: true,
@@ -81,8 +96,10 @@ const ProjectsSection = () => {
             Mis <span className="gradient-text">Proyectos</span>
           </h2>
 
-          <p className="text-muted-foreground text-center mb-16 max-w-md mx-auto">
-            Algunos de los proyectos donde he aplicado mis conocimientos en desarrollo web.
+          <p className="text-muted-foreground text-center mb-16 max-w-2xl mx-auto">
+            Proyectos desarrollados aplicando arquitecturas modernas,
+            bases de datos, APIs, automatización de procesos y diseño
+            de experiencias web enfocadas en resolver problemas reales.
           </p>
         </motion.div>
 

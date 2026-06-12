@@ -2,26 +2,41 @@ import { useState, useEffect } from "react";
 import { Menu, X, Github, Download } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const navLinks = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Sobre mí", href: "#sobre-mi" },
-  { label: "Habilidades", href: "#habilidades" },
-  { label: "Proyectos", href: "#proyectos" },
-  { label: "Contacto", href: "#contacto" },
-];
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/translations";
 
 const Navbar = () => {
+  const { language, toggleLanguage } = useLanguage();
+
+  const t = translations[language];
+
+  const navLinks = [
+    { label: t.nav.home, href: "#inicio" },
+    { label: t.nav.about, href: "#sobre-mi" },
+    { label: t.nav.skills, href: "#habilidades" },
+    { label: t.nav.projects, href: "#proyectos" },
+    { label: t.nav.contact, href: "#contacto" },
+  ];
+
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("inicio");
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
     e.preventDefault();
-    const id = href.replace('#', '');
+
+    const id = href.replace("#", "");
     const element = document.getElementById(id);
+
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({
+        behavior: "smooth",
+      });
     }
+
     setIsOpen(false);
   };
 
@@ -29,21 +44,35 @@ const Navbar = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      // Lista de IDs de secciones (sin el #)
-      const sections = ["inicio", "sobre-mi", "habilidades", "proyectos", "contacto"];
+      const sections = [
+        "inicio",
+        "sobre-mi",
+        "habilidades",
+        "proyectos",
+        "contacto",
+      ];
 
-      for (const id of sections.reverse()) {
+      for (const id of [...sections].reverse()) {
         const element = document.getElementById(id);
-        if (element && element.getBoundingClientRect().top <= 100) {
+
+        if (
+          element &&
+          element.getBoundingClientRect().top <= 100
+        ) {
           setActiveSection(id);
           break;
         }
       }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Ejecutar al cargar para detectar sección inicial
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+
+    handleScroll();
+
+    return () =>
+      window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -51,8 +80,11 @@ const Navbar = () => {
       initial={{ y: -80 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "glass shadow-lg" : "bg-transparent"
-        }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "glass shadow-lg"
+          : "bg-transparent"
+      }`}
     >
       <div className="container mx-auto flex items-center justify-between h-16 md:h-20 px-4">
         <a
@@ -66,16 +98,20 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => {
-            const sectionId = link.href.replace('#', '');
+            const sectionId = link.href.replace("#", "");
+
             return (
               <a
                 key={link.href}
                 href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === sectionId
+                onClick={(e) =>
+                  handleNavClick(e, link.href)
+                }
+                className={`text-sm font-medium transition-colors hover:text-primary ${
+                  activeSection === sectionId
                     ? "text-primary"
                     : "text-muted-foreground"
-                  }`}
+                }`}
               >
                 {link.label}
               </a>
@@ -83,6 +119,14 @@ const Navbar = () => {
           })}
 
           <div className="flex items-center gap-3 ml-4 border-l border-border pl-4">
+            {/* Selector de idioma */}
+            <button
+              onClick={toggleLanguage}
+              className="px-3 py-2 rounded-lg border border-border text-sm font-medium hover:bg-muted/50 transition-all"
+            >
+              {language === "es" ? "EN" : "ES"}
+            </button>
+
             <a
               href="https://github.com/CodeWithAlli"
               target="_blank"
@@ -92,6 +136,7 @@ const Navbar = () => {
             >
               <Github size={18} />
             </a>
+
             <a
               href="/portafolio-alli/cv-allison.pdf"
               target="_blank"
@@ -100,7 +145,7 @@ const Navbar = () => {
               download
             >
               <Download size={14} />
-              CV
+              {t.nav.cv}
             </a>
           </div>
         </div>
@@ -111,7 +156,11 @@ const Navbar = () => {
           className="md:hidden text-foreground p-2 rounded-lg hover:bg-muted/50 transition-colors"
           aria-label="Toggle navigation menu"
         >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+          {isOpen ? (
+            <X size={24} />
+          ) : (
+            <Menu size={24} />
+          )}
         </button>
       </div>
 
@@ -119,25 +168,43 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
+            initial={{
+              opacity: 0,
+              height: 0,
+            }}
+            animate={{
+              opacity: 1,
+              height: "auto",
+            }}
+            exit={{
+              opacity: 0,
+              height: 0,
+            }}
+            transition={{
+              duration: 0.2,
+            }}
             className="md:hidden glass border-t border-border"
           >
             <div className="container mx-auto py-6 px-4">
               <nav className="flex flex-col gap-2">
                 {navLinks.map((link) => {
-                  const sectionId = link.href.replace('#', '');
+                  const sectionId = link.href.replace(
+                    "#",
+                    ""
+                  );
+
                   return (
                     <a
                       key={link.href}
                       href={link.href}
-                      onClick={(e) => handleNavClick(e, link.href)}
-                      className={`text-base font-medium py-3 px-4 rounded-xl transition-all ${activeSection === sectionId
+                      onClick={(e) =>
+                        handleNavClick(e, link.href)
+                      }
+                      className={`text-base font-medium py-3 px-4 rounded-xl transition-all ${
+                        activeSection === sectionId
                           ? "text-primary bg-primary/10"
                           : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-                        }`}
+                      }`}
                     >
                       {link.label}
                     </a>
@@ -146,6 +213,16 @@ const Navbar = () => {
               </nav>
 
               <div className="flex items-center gap-4 pt-6 mt-6 border-t border-border">
+                {/* Selector idioma móvil */}
+                <button
+                  onClick={toggleLanguage}
+                  className="px-4 py-3 rounded-xl border border-border text-sm font-medium hover:bg-muted/50 transition-all"
+                >
+                  {language === "es"
+                    ? "English"
+                    : "Español"}
+                </button>
+
                 <a
                   href="https://github.com/CodeWithAlli"
                   target="_blank"
@@ -155,6 +232,7 @@ const Navbar = () => {
                 >
                   <Github size={20} />
                 </a>
+
                 <a
                   href="/portafolio-alli/cv-allison.pdf"
                   target="_blank"
@@ -163,7 +241,7 @@ const Navbar = () => {
                   download
                 >
                   <Download size={16} />
-                  Descargar CV
+                  {t.nav.downloadCv}
                 </a>
               </div>
             </div>

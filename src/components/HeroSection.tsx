@@ -3,9 +3,12 @@ import { ArrowDown, Code2 } from "lucide-react";
 import profilePhoto from "@/assets/programadora.jpg";
 import cambioPhoto from "@/assets/CodeWhithAlli.jpg";
 import { useEffect, useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/translations";
 
 const HeroSection = () => {
-
+  const { language } = useLanguage();
+  const t = translations[language];
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     const id = href.replace("#", "");
@@ -37,15 +40,15 @@ const HeroSection = () => {
       <div className="absolute inset-0" style={{ background: "var(--gradient-bg)" }} />
 
       {/* Tech background (nuevo fondo profesional) */}
-<div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
-  <div className="text-[60px] sm:text-[80px] lg:text-[100px] font-mono font-semibold opacity-[0.02] text-center leading-tight select-none blur-[1px]">
-    REACT • FASTAPI • PYTHON
-    <br />
-    MACHINE LEARNING • APIs
-    <br />
-    SQL • NODE • GIT
-  </div>
-</div>
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+        <div className="text-[60px] sm:text-[80px] lg:text-[100px] font-mono font-semibold opacity-[0.02] text-center leading-tight select-none blur-[1px]">
+          REACT • FASTAPI • PYTHON
+          <br />
+          MACHINE LEARNING • APIs
+          <br />
+          SQL • NODE • GIT
+        </div>
+      </div>
 
       <div className="container mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
@@ -65,20 +68,19 @@ const HeroSection = () => {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card/50 text-sm text-muted-foreground mb-6"
             >
               <Code2 size={14} className="text-primary" />
-              <span>React • TypeScript • FastAPI • Machine Learning</span>
+              <span>{t.hero.badge}</span>
             </motion.div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-4">
-              Hola, soy <span className="gradient-text">Allison More</span>
+              {t.hero.greeting} <span className="gradient-text">Allison More</span>
             </h1>
 
             <p className="text-lg sm:text-xl font-mono text-primary mb-6">
-              Desarrolladora de Software | Frontend & Backend
+              {t.hero.subtitle}
             </p>
 
             <p className="text-muted-foreground text-base sm:text-lg max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed">
-              Me especializo en crear experiencias digitales rápidas, accesibles y escalables.
-              Cada proyecto es una oportunidad de escribir código que marque la diferencia.
+              {t.hero.description}
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
@@ -87,7 +89,7 @@ const HeroSection = () => {
                 onClick={(e) => handleNavClick(e, "#proyectos")}
                 className="gradient-bg text-primary-foreground px-8 py-3.5 rounded-xl font-semibold text-sm hover:opacity-90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0"
               >
-                Ver mis proyectos
+                {t.hero.projectsButton}
               </a>
 
               <a
@@ -95,7 +97,7 @@ const HeroSection = () => {
                 onClick={(e) => handleNavClick(e, "#contacto")}
                 className="border border-border/50 bg-card/80 backdrop-blur-sm text-foreground px-8 py-3.5 rounded-xl font-semibold text-sm hover:border-primary hover:bg-primary/5 hover:shadow-md transition-all hover:-translate-y-0.5 active:translate-y-0"
               >
-                Contáctame
+                {t.hero.contactButton}
               </a>
             </div>
 
@@ -112,7 +114,7 @@ const HeroSection = () => {
           >
             <img
               src={images[currentImage]}
-              alt="Allison More - Desarrolladora Full Stack"
+              alt={t.hero.imageAlt}
               className="w-full h-full object-cover"
             />
           </motion.div>
@@ -133,7 +135,7 @@ const HeroSection = () => {
             className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110"
           >
             <span className="text-xs tracking-wide font-medium">
-              Explorar
+              {t.hero.explore}
             </span>
 
             <ArrowDown size={16} className="animate-bounce" />

@@ -6,81 +6,25 @@ import projectAutoland from "@/assets/project-autoland.jpg";
 import projectDashboard from "@/assets/project-dashboard.jpg";
 import projectAuraSpa from "@/assets/project-aura-spa.jpg";
 import projectONPE from "@/assets/project-onpe.jpg";
-
-const projects = [
-  {
-    title: "Sistema de Gestión Electoral ONPE",
-    featured: true,
-    description:
-      "Plataforma web para la administración de procesos electorales, gestión de padrón electoral, usuarios, auditoría y estadísticas en tiempo real.",
-    challenge:
-      "Diseñar una arquitectura segura y escalable utilizando Supabase, Edge Functions y control de acceso basado en roles para garantizar la integridad de la información electoral.",
-    result:
-      "Se implementó un sistema centralizado capaz de gestionar procesos electorales completos con trazabilidad, auditoría y generación de reportes administrativos.",
-    tech: ["React", "TypeScript", "Tailwind", "Supabase", "Edge Functions", "PostgreSQL"],
-    image: projectONPE,
-    github: "https://github.com/CodeWithAlli/onpe-votaciones",
-    demo: "https://onpe-votaciones.vercel.app/votar",
-  },
-  {
-    title: "Aura Spa – Santuario de Bienestar",
-    featured: true,
-    description:
-      "Sitio web para un spa de lujo en Lima, con presentación de servicios de bienestar, tratamientos faciales, masajes y reservas.",
-    challenge:
-      "Transmitir una estética sofisticada y relajante que refleje la identidad premium del spa y genere confianza en el usuario.",
-    result:
-      "Se logró una experiencia visual elegante con paleta natural y navegación fluida que invita al usuario a explorar los servicios.",
-    tech: ["React", "Tailwind", "TypeScript", "Vercel"],
-    image: projectAuraSpa,
-    github: "https://github.com/CodeWithAlli",
-    demo: "https://aura-spa-frontend.vercel.app/",
-  },
-  {
-    title: "Página web para staff de abogados",
-    featured: true,
-    description:
-      "Sitio web profesional para un estudio jurídico con presentación de servicios, equipo legal y contacto.",
-    challenge:
-      "Diseñar una interfaz clara y profesional que transmitiera confianza y facilitara el acceso a la información legal.",
-    result:
-      "Se logró una navegación simple y una presentación clara de los servicios legales, mejorando la experiencia del usuario.",
-    tech: ["React", "Tailwind", "JavaScript"],
-    image: projectAbogado,
-    github: "https://github.com/CodeWithAlli/STAFF-ABOGADOS-DEFENDIENDO-LOS-DERECHOS",
-    demo: " https://codewithalli.github.io/STAFF-ABOGADOS-DEFENDIENDO-LOS-DERECHOS/",
-  },
-  {
-    title: "Gestor de Tareas",
-    featured: true,
-    description:
-      "Aplicación tipo Kanban para organizar tareas mediante tableros interactivos con funcionalidad drag & drop.",
-    challenge:
-      "Optimizar el rendimiento del sistema de arrastrar y soltar cuando existen muchas tareas en pantalla.",
-    result:
-      "Se implementó una interfaz fluida que permite gestionar tareas de forma visual y rápida.",
-    tech: ["React", "Firebase", "TypeScript", "DnD Kit"],
-    image: projectAutoland,
-    github: "https://github.com/CodeWithAlli",
-    demo: "http://autoland.infinityfreeapp.com/login.php",
-  },
-  {
-    title: "Dashboard de Analytics",
-    featured: false,
-    description:
-      "Panel de análisis de datos con gráficos interactivos y reportes dinámicos.",
-    challenge:
-      "Visualizar grandes volúmenes de datos manteniendo una interfaz rápida y clara.",
-    result:
-      "Se logró un panel que permite analizar datos de forma visual y tomar decisiones rápidamente.",
-    tech: ["React", "Chart.js", "Python", "FastAPI", "PostgreSQL"],
-    image: projectDashboard,
-    github: "https://github.com/CodeWithAlli",
-    demo: "#",
-  },
-];
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/translations";
 
 const ProjectsSection = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
+  const projectImages = {
+    onpe: projectONPE,
+    auraSpa: projectAuraSpa,
+    abogados: projectAbogado,
+    tareas: projectAutoland,
+    dashboard: projectDashboard,
+  };
+
+  const projects = t.projects.items.map((project) => ({
+    ...project,
+    image: projectImages[project.imageKey as keyof typeof projectImages],
+  }));
+
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -93,13 +37,14 @@ const ProjectsSection = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4">
-            Mis <span className="gradient-text">Proyectos</span>
+            {t.projects.title}{" "}
+            <span className="gradient-text">
+              {t.projects.titleHighlight}
+            </span>
           </h2>
 
           <p className="text-muted-foreground text-center mb-16 max-w-2xl mx-auto">
-            Proyectos desarrollados aplicando arquitecturas modernas,
-            bases de datos, APIs, automatización de procesos y diseño
-            de experiencias web enfocadas en resolver problemas reales.
+            {t.projects.description}
           </p>
         </motion.div>
 
@@ -117,7 +62,7 @@ const ProjectsSection = () => {
               {project.featured && (
                 <div className="absolute top-4 left-4 z-20 px-3 py-1 text-xs font-semibold rounded-full
                 bg-gradient-to-r from-yellow-400 to-amber-500 text-black shadow-lg">
-                  ⭐ Proyecto destacado
+                  ⭐ {t.projects.featured}
                 </div>
               )}
 
@@ -158,7 +103,7 @@ const ProjectsSection = () => {
 
                 <div className="mb-4">
                   <p className="text-xs font-semibold text-primary mb-1">
-                    Desafío técnico
+                    {t.projects.challenge}
                   </p>
                   <p className="text-muted-foreground text-sm leading-relaxed">
                     {project.challenge}
@@ -167,7 +112,7 @@ const ProjectsSection = () => {
 
                 <div className="mb-4">
                   <p className="text-xs font-semibold text-green-500 mb-1">
-                    Resultado
+                    {t.projects.result}
                   </p>
                   <p className="text-muted-foreground text-sm leading-relaxed">
                     {project.result}
@@ -176,12 +121,12 @@ const ProjectsSection = () => {
 
                 {/* Stack */}
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tech.map((t) => (
+                  {project.tech.map((tech) => (
                     <span
-                      key={t}
+                      key={tech}
                       className="px-3 py-1 text-xs font-mono rounded-full bg-primary/10 text-primary border border-primary/20"
                     >
-                      {t}
+                      {tech}
                     </span>
                   ))}
                 </div>
@@ -195,7 +140,7 @@ const ProjectsSection = () => {
                     className="flex items-center gap-2 px-4 py-2 rounded-lg border border-border text-sm hover:border-primary/50 transition"
                   >
                     <Github size={16} />
-                    Código
+                    {t.projects.code}
                   </a>
 
                   <a
@@ -205,7 +150,7 @@ const ProjectsSection = () => {
                     className="flex items-center gap-2 px-4 py-2 rounded-lg gradient-bg text-primary-foreground text-sm"
                   >
                     <ExternalLink size={16} />
-                    Demo
+                    {t.projects.demo}
                   </a>
                 </div>
               </div>

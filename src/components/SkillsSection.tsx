@@ -1,6 +1,8 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useCallback } from "react";
 import { Lock, ChevronDown } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/translations";
 
 import {
   SiTypescript, SiVite, SiTailwindcss, SiGithub, SiPostgresql,
@@ -86,6 +88,8 @@ const SkillCard = ({ skill, locked = false }: { skill: Skill; locked?: boolean }
 );
 
 const SkillsSection = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -115,11 +119,14 @@ const SkillsSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl font-bold mb-4">
-            Mis <span className="gradient-text">Habilidades</span>
+            {t.skills.title}{" "}
+            <span className="gradient-text">
+              {t.skills.titleHighlight}
+            </span>
           </h2>
 
           <p className="text-muted-foreground max-w-lg mx-auto">
-            Tecnologías que utilizo para construir aplicaciones modernas.
+            {t.skills.description}
           </p>
         </motion.div>
 
@@ -127,7 +134,7 @@ const SkillsSection = () => {
         {/* STACK */}
         <div className="mb-16">
           <h3 className="text-xl font-semibold mb-6 text-primary">
-            Stack principal
+            {t.skills.mainStack}
           </h3>
           {renderGrid(stackPrincipal)}
         </div>
@@ -136,7 +143,7 @@ const SkillsSection = () => {
         {/* TECNOLOGIAS */}
         <div className="mb-16">
           <h3 className="text-xl font-semibold mb-6 text-foreground">
-            Tecnologías que uso
+            {t.skills.technologies}
           </h3>
           {renderGrid(tecnologias)}
         </div>
@@ -145,19 +152,26 @@ const SkillsSection = () => {
         {/* EXPLORANDO */}
         <div>
           <h3 className="text-xl font-semibold mb-6 text-muted-foreground">
-            Explorando
+            {t.skills.exploring}
           </h3>
 
           {renderGrid(visibleExplorando, true)}
 
-          {!showAll && explorando.length > 8 && (
+          {explorando.length > 8 && (
             <div className="flex justify-center mt-10">
               <button
                 onClick={toggleShowAll}
                 className="flex items-center gap-2 px-6 py-3 rounded-xl border border-border hover:border-primary transition"
               >
-                Ver más
-                <ChevronDown size={16} />
+                {showAll
+                  ? t.skills.showLess
+                  : t.skills.showMore}
+
+                <ChevronDown
+                  size={16}
+                  className={`transition-transform ${showAll ? "rotate-180" : ""
+                    }`}
+                />
               </button>
             </div>
           )}

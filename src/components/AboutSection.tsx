@@ -1,8 +1,19 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
-import { Briefcase, Code, GitFork, Clock, CheckCircle } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/translations";
+import {
+  CheckCircle,
+  Briefcase,
+  Clock,
+  GitFork,
+  Code,
+} from "lucide-react";
 
 const AboutSection = () => {
+
+  const { language } = useLanguage();
+  const t = translations[language];
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [repoCount, setRepoCount] = useState("...");
@@ -15,18 +26,29 @@ const AboutSection = () => {
   }, []);
 
   const stats = [
-    { icon: Briefcase, value: "1+", label: "Proyectos completados" },
-    { icon: Clock, value: "2+", label: "Años aprendiendo desarrollo" },
-    { icon: GitFork, value: repoCount, label: "Repositorios públicos" },
-    { icon: Code, value: "1000+", label: "Horas de código" },
+    {
+      icon: Briefcase,
+      value: "1+",
+      label: t.about.stats.projects,
+    },
+    {
+      icon: Clock,
+      value: "2+",
+      label: t.about.stats.learning,
+    },
+    {
+      icon: GitFork,
+      value: repoCount,
+      label: t.about.stats.repositories,
+    },
+    {
+      icon: Code,
+      value: "1000+",
+      label: t.about.stats.hours,
+    },
   ];
 
-  const highlights = [
-    "Desarrollo de aplicaciones web con React y TypeScript",
-    "Construcción de APIs con Node.js y FastAPI",
-    "Interés en Machine Learning y automatización",
-    "Buenas prácticas y código limpio",
-  ];
+  const highlights = t.about.highlights;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -54,12 +76,14 @@ const AboutSection = () => {
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center mb-14">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              Sobre <span className="gradient-text">mí</span>
+              {t.about.title}{" "}
+              <span className="gradient-text">
+                {t.about.titleHighlight}
+              </span>
             </h2>
 
             <p className="text-muted-foreground max-w-md mx-auto">
-              Desarrolladora enfocada en crear soluciones web modernas,
-              rápidas y escalables.
+              {t.about.subtitle}
             </p>
           </motion.div>
 
@@ -73,18 +97,16 @@ const AboutSection = () => {
             {/* Short description */}
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
-                Soy desarrolladora Full Stack con interés en crear
-                aplicaciones útiles y bien diseñadas.
+                {t.about.paragraph1}
               </p>
 
               <p>
-                Disfruto aprender nuevas tecnologías y transformar ideas
-                en productos funcionales que resuelvan problemas reales.
+                {t.about.paragraph2}
               </p>
 
               <blockquote className="border-l-2 border-primary pl-4 py-2 mt-4">
                 <p className="text-foreground font-medium italic">
-                  "El buen software no solo funciona, también es fácil de mantener."
+                  {t.about.quote}
                 </p>
               </blockquote>
             </div>

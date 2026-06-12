@@ -1,6 +1,10 @@
-import { Github, Mail,MessageCircle, Heart } from "lucide-react";
+import { Github, Mail, MessageCircle, Heart } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/translations";
 
 const FooterSection = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
   const year = new Date().getFullYear();
 
   return (
@@ -12,21 +16,21 @@ const FooterSection = () => {
               &lt;CodeWithAlli /&gt;
             </a>
             <p className="text-muted-foreground text-xs mt-1">
-              © {year} | Allison More | Todos los derechos reservados.
+            © {year} | Allison More | {t.footer.rights}
             </p>
           </div>
 
-               <div className="flex items-center gap-2 text-xs text-muted-foreground">
-            Hecho con
+          <div className="flex items-center gap-2 text-xs text-muted-foreground">
+          {t.footer.madeWith}
             <Heart size={14} className="text-red-500 animate-pulse" />
-            y demasiado café
+            {t.footer.tooMuchCoffee}
           </div>
 
           <div className="flex items-center gap-4">
             {[
               { icon: Github, href: "https://github.com/CodeWithAlli" },
               { icon: Mail, href: "mailto:allisonmorerivas551@gmail.com" },
-              { icon: MessageCircle, href: "https://wa.me/51903562285"},
+              { icon: MessageCircle, href: "https://wa.me/51903562285" },
             ].map((social, i) => (
               <a
                 key={i}

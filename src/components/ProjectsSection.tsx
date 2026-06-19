@@ -16,7 +16,7 @@ const ProjectsSection = () => {
     onpe: projectONPE,
     auraSpa: projectAuraSpa,
     abogados: projectAbogado,
-    tareas: projectAutoland,
+    autoland: projectAutoland,
     dashboard: projectDashboard,
   };
 

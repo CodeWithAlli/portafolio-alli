@@ -192,29 +192,29 @@ export const translations = {
           },
       
           {
-            imageKey: "tareas",
+            imageKey: "autoland",
             featured: false,
-      
-            title: "Gestor de Tareas",
-      
+          
+            title: "AUTOLAND — Gestión de Concesionaria",
+          
             description:
-              "Aplicación tipo Kanban para organizar tareas mediante tableros interactivos con funcionalidad drag & drop.",
-      
+              "Panel administrativo interno para una concesionaria de autos, con control de inventario, clientes y seguimiento de negociaciones de venta mediante un tablero por estados.",
+          
             challenge:
-              "Optimizar el rendimiento del sistema de arrastrar y soltar cuando existen muchas tareas en pantalla.",
-      
+              "Migrar un sistema heredado en PHP/MySQL a una arquitectura moderna con React y Supabase, manteniendo la seguridad por roles (admin/vendedor) y evitando la sobreventa de unidades en el inventario.",
+          
             result:
-              "Se implementó una interfaz fluida que permite gestionar tareas de forma visual y rápida.",
-      
+              "Sistema funcional con autenticación por roles, seguridad a nivel de fila (RLS), tablero de negociaciones tipo Kanban y sincronización automática del estado del inventario según las ventas concretadas.",
+          
             tech: [
               "React",
-              "Firebase",
-              "TypeScript",
-              "DnD Kit",
+              "Supabase",
+              "PostgreSQL",
+              "Vite",
             ],
-      
-            github: "https://github.com/CodeWithAlli",
-            demo: "http://autoland.infinityfreeapp.com/login.php",
+          
+            github: "https://github.com/CodeWithAlli/Autoland",
+            demo: "https://autoland-bice.vercel.app/login",
           },
       
           {
@@ -445,29 +445,29 @@ export const translations = {
           },
       
           {
-            imageKey: "tareas",
+            imageKey: "autoland",
             featured: false,
-      
-            title: "Task Manager",
-      
+          
+            title: "AUTOLAND — Dealership Management",
+          
             description:
-              "Kanban-style application for organizing tasks through interactive drag-and-drop boards.",
-      
+              "Internal admin panel for a car dealership, with inventory control, customer management, and sales negotiation tracking through a status-based board.",
+          
             challenge:
-              "Optimize drag-and-drop performance when handling large numbers of tasks.",
-      
+              "Migrate a legacy PHP/MySQL system to a modern React and Supabase architecture, preserving role-based security (admin/salesperson) and preventing overselling of inventory units.",
+          
             result:
-              "A smooth and responsive interface was implemented for efficient visual task management.",
-      
+              "A fully functional system with role-based authentication, row-level security (RLS), a Kanban-style negotiation board, and automatic inventory status syncing based on completed sales.",
+          
             tech: [
               "React",
-              "Firebase",
-              "TypeScript",
-              "DnD Kit",
+              "Supabase",
+              "PostgreSQL",
+              "Vite",
             ],
-      
-            github: "https://github.com/CodeWithAlli",
-            demo: "http://autoland.infinityfreeapp.com/login.php",
+          
+            github: "https://github.com/CodeWithAlli/Autoland",
+            demo: "https://autoland-bice.vercel.app/login",
           },
       
           {

@@ -1,0 +1,507 @@
+//ESPAÑO & ENGLISH LOS PROYECTOS ESTAN AL FINAL LO DEMAS NO SE TOCA 
+
+export const translations = {
+  es: {
+    nav: {
+      home: "Inicio",
+      about: "Sobre mí",
+      skills: "Habilidades",
+      projects: "Proyectos",
+      contact: "Contacto",
+      cv: "CV",
+      downloadCv: "Descargar CV",
+    },
+    //INICIO//
+    hero: {
+      badge: "React • TypeScript • FastAPI • Machine Learning",
+      greeting: "Hola, soy",
+      subtitle: "Desarrolladora de Software | Frontend & Backend",
+      description:
+        "Me especializo en crear experiencias digitales rápidas, accesibles y escalables. Cada proyecto es una oportunidad de escribir código que marque la diferencia.",
+      projectsButton: "Ver mis proyectos",
+      contactButton: "Contáctame",
+      explore: "Explorar",
+      imageAlt: "Allison More - Desarrolladora Full Stack",
+    },
+    //SOBRE MI//
+    about: {
+      title: "Sobre",
+      titleHighlight: "mí",
+    
+      subtitle:
+        "Desarrolladora enfocada en crear soluciones web modernas, rápidas y escalables.",
+    
+      paragraph1:
+        "Soy desarrolladora Full Stack con interés en crear aplicaciones útiles y bien diseñadas.",
+    
+      paragraph2:
+        "Disfruto aprender nuevas tecnologías y transformar ideas en productos funcionales que resuelvan problemas reales.",
+    
+      quote:
+        "El buen software no solo funciona, también es fácil de mantener.",
+    
+      highlights: [
+        "Desarrollo de aplicaciones web con React y TypeScript",
+        "Construcción de APIs con Node.js y FastAPI",
+        "Interés en Machine Learning y automatización",
+        "Buenas prácticas y código limpio",
+      ],
+    
+      stats: {
+        projects: "Proyectos completados",
+        learning: "Años aprendiendo desarrollo",
+        repositories: "Repositorios públicos",
+        hours: "Horas de código",
+      },
+    },
+    //HABILIDADES//
+    skills: {
+      title: "Mis",
+      titleHighlight: "Habilidades",
+      description:
+        "Tecnologías que utilizo para construir aplicaciones modernas.",
+      mainStack: "Stack principal",
+      technologies: "Tecnologías que uso",
+      exploring: "Explorando",
+      showMore: "Ver más",
+      showLess: "Ver menos",
+    },
+    //CONTACTOS//
+    contact: {
+      title: "¿",
+      titleHighlight: "Hablamos",
+      titleEnd: "?",
+    
+      description:
+        "Disponible para proyectos freelance, colaboraciones o oportunidades como desarrolladora Full-Stack.",
+    
+      available: "Disponible para trabajar",
+    
+      cv: "Descargar CV",
+    
+      email: "Email",
+      whatsapp: "WhatsApp",
+      resume: "Currículum",
+      profile: "Perfil",
+    
+      country: "Perú",
+    
+      remote: "Trabajo remoto disponible",
+    },
+    //FOOTER//
+    footer: {
+      rights: "Todos los derechos reservados.",
+      madeWith: "Hecho con",
+      tooMuchCoffee: "y demasiado café",
+    },
+    //PROYECTOS//
+    projects: {
+      title: "Mis",
+      titleHighlight: "Proyectos",
+    
+      description:
+        "Proyectos desarrollados aplicando arquitecturas modernas, bases de datos, APIs, automatización de procesos y diseño de experiencias web enfocadas en resolver problemas reales.",
+    
+      featured: "Proyecto destacado",
+      challenge: "Desafío técnico",
+      result: "Resultado",
+      code: "Código",
+      demo: "Demo",
+    
+      items: [
+        {
+          imageKey: "accesoFacial",
+          featured: true,
+
+          title: "Sistema de Acceso Facial con Reconocimiento Biométrico",
+
+          description:
+            "Kiosco de asistencia con reconocimiento facial en tiempo real, detección de parpadeo como prueba de vida, y panel administrativo con cálculo automático de faltas, descuentos e inasistencias.",
+
+          challenge:
+            "Construir un pipeline de reconocimiento facial confiable (detección + embeddings + verificación por similitud) con liveness check anti-spoofing, y diferenciar la lógica de penalización entre empleados (descuento monetario) y estudiantes (pérdida de curso por % de inasistencia), todo desplegado con almacenamiento en la nube.",
+
+          result:
+            "Sistema funcional end-to-end: kiosco web que reconoce el rostro, valida parpadeo, registra ingreso/salida con audio de confirmación, y un dashboard admin con gráficos de faltas/justificadas por colores. Desplegado con backend en Render, frontend en Vercel y base de datos + storage en Supabase.",
+
+          tech: [
+            "Python",
+            "Flask",
+            "OpenCV",
+            "React",
+            "Supabase",
+            "PostgreSQL",
+            "Chart.js",
+          ],
+
+          github: "https://github.com/CodeWithAlli/Acceso_Facial",
+          demo: "https://acceso-facial.vercel.app/",
+        },
+
+        {
+          imageKey: "onpe",
+          featured: true,
+    
+          title: "Sistema de Gestión Electoral ONPE",
+    
+          description:
+            "Plataforma web para la administración de procesos electorales, gestión de padrón electoral, usuarios, auditoría y estadísticas en tiempo real.",
+    
+          challenge:
+            "Diseñar una arquitectura segura y escalable utilizando Supabase, Edge Functions y control de acceso basado en roles para garantizar la integridad de la información electoral.",
+    
+          result:
+            "Se implementó un sistema centralizado capaz de gestionar procesos electorales completos con trazabilidad, auditoría y generación de reportes administrativos.",
+    
+          tech: [
+            "React",
+            "TypeScript",
+            "Tailwind",
+            "Supabase",
+            "Edge Functions",
+            "PostgreSQL",
+          ],
+    
+          github: "https://github.com/CodeWithAlli/onpe-votaciones",
+          demo: "https://onpe-votaciones.vercel.app/votar",
+        },
+    
+        {
+          imageKey: "auraSpa",
+          featured: true,
+    
+          title: "Aura Spa – Santuario de Bienestar",
+    
+          description:
+            "Sitio web para un spa de lujo en Lima, con presentación de servicios de bienestar, tratamientos faciales, masajes y reservas.",
+    
+          challenge:
+            "Transmitir una estética sofisticada y relajante que refleje la identidad premium del spa y genere confianza en el usuario.",
+    
+          result:
+            "Se logró una experiencia visual elegante con paleta natural y navegación fluida que invita al usuario a explorar los servicios.",
+    
+          tech: [
+            "React",
+            "Tailwind",
+            "TypeScript",
+            "Vercel",
+          ],
+    
+          github: "https://github.com/CodeWithAlli",
+          demo: "https://aura-spa-frontend.vercel.app/",
+        },
+    
+        {
+          imageKey: "abogados",
+          featured: false,
+    
+          title: "Página Web para Staff de Abogados",
+    
+          description:
+            "Sitio web profesional para un estudio jurídico con presentación de servicios, equipo legal y contacto.",
+    
+          challenge:
+            "Diseñar una interfaz clara y profesional que transmitiera confianza y facilitara el acceso a la información legal.",
+    
+          result:
+            "Se logró una navegación simple y una presentación clara de los servicios legales, mejorando la experiencia del usuario.",
+    
+          tech: [
+            "React",
+            "Tailwind",
+            "JavaScript",
+          ],
+    
+          github:
+            "https://github.com/CodeWithAlli/STAFF-ABOGADOS-DEFENDIENDO-LOS-DERECHOS",
+    
+          demo:
+            "https://codewithalli.github.io/STAFF-ABOGADOS-DEFENDIENDO-LOS-DERECHOS/",
+        },
+    
+        {
+          imageKey: "autoland",
+          featured: false,
+        
+          title: "AUTOLAND — Gestión de Concesionaria",
+        
+          description:
+            "Panel administrativo interno para una concesionaria de autos, con control de inventario, clientes y seguimiento de negociaciones de venta mediante un tablero por estados.",
+        
+          challenge:
+            "Migrar un sistema heredado en PHP/MySQL a una arquitectura moderna con React y Supabase, manteniendo la seguridad por roles (admin/vendedor) y evitando la sobreventa de unidades en el inventario.",
+        
+          result:
+            "Sistema funcional con autenticación por roles, seguridad a nivel de fila (RLS), tablero de negociaciones tipo Kanban y sincronización automática del estado del inventario según las ventas concretadas.",
+        
+          tech: [
+            "React",
+            "Supabase",
+            "PostgreSQL",
+            "Vite",
+          ],
+        
+          github: "https://github.com/CodeWithAlli/Autoland",
+          demo: "https://autoland-bice.vercel.app/login",
+        },
+      ],
+    },
+  },
+
+
+
+
+
+
+
+//----------ENGLISH----------//
+  en: {
+    nav: {
+      home: "Home",
+      about: "About Me",
+      skills: "Skills",
+      projects: "Projects",
+      contact: "Contact",
+      cv: "Resume",
+      downloadCv: "Download Resume",
+    },
+    //INICIO//
+    hero: {
+      badge: "React • TypeScript • FastAPI • Machine Learning",
+      greeting: "Hi, I'm",
+      subtitle: "Software Developer | Frontend & Backend",
+      description:
+        "I specialize in building fast, accessible, and scalable digital experiences. Every project is an opportunity to write code that makes a difference.",
+      projectsButton: "View My Projects",
+      contactButton: "Contact Me",
+      explore: "Explore",
+      imageAlt: "Allison More - Full Stack Developer",
+    },
+    //SOBRE MI//
+    about: {
+      title: "About",
+      titleHighlight: "Me",
+    
+      subtitle:
+        "Developer focused on building modern, fast and scalable web solutions.",
+    
+      paragraph1:
+        "I am a Full Stack developer passionate about creating useful and well-designed applications.",
+    
+      paragraph2:
+        "I enjoy learning new technologies and transforming ideas into functional products that solve real-world problems.",
+    
+      quote:
+        "Good software doesn't just work, it's also easy to maintain.",
+    
+      highlights: [
+        "Web application development with React and TypeScript",
+        "API development with Node.js and FastAPI",
+        "Interest in Machine Learning and automation",
+        "Clean code and best practices",
+      ],
+    
+      stats: {
+        projects: "Completed Projects",
+        learning: "Years Learning Development",
+        repositories: "Public Repositories",
+        hours: "Hours of Coding",
+      },
+    },
+    //HABILIDADES//
+    skills: {
+      title: "My",
+      titleHighlight: "Skills", 
+      description:
+        "Technologies I use to build modern applications.",
+      mainStack: "Main Stack",
+      technologies: "Technologies I Use",
+      exploring: "Currently Exploring", 
+      showMore: "Show More",
+      showLess: "Show Less",
+    },
+    //CONTACTOS//
+    contact: {
+      title: "",
+      titleHighlight: "Let's Talk",
+      titleEnd: "",
+    
+      description:
+        "Available for freelance projects, collaborations, and Full-Stack developer opportunities.",
+    
+      available: "Available for Work",
+    
+      cv: "Download Resume",
+    
+      email: "Email",
+      whatsapp: "WhatsApp",
+      resume: "Resume",
+      profile: "Profile",
+    
+      country: "Peru",
+    
+      remote: "Remote Work Available",
+    },
+    //FOOTER//
+    footer: {
+      rights: "All rights reserved.",
+      madeWith: "Made with",
+      tooMuchCoffee: "and too much coffee",
+    },
+    //PROYECTOS//
+    projects: {
+      title: "My",
+      titleHighlight: "Projects",
+    
+      description:
+        "Projects built using modern architectures, databases, APIs, process automation, and web experiences focused on solving real-world problems.",
+    
+      featured: "Featured Project",
+      challenge: "Technical Challenge",
+      result: "Result",
+      code: "Code",
+      demo: "Live Demo",
+    
+      items: [
+        {
+          imageKey: "accesoFacial",
+          featured: true,
+
+          title: "Facial Access System with Biometric Recognition",
+
+          description:
+            "Attendance kiosk with real-time facial recognition, blink detection as a liveness check, and an admin dashboard with automatic calculation of absences, discounts, and non-attendance.",
+
+          challenge:
+            "Build a reliable facial recognition pipeline (detection + embeddings + similarity verification) with an anti-spoofing liveness check, and separate the penalty logic between employees (monetary discount) and students (losing the course based on % of non-attendance), all deployed with cloud storage.",
+
+          result:
+            "A fully functional end-to-end system: a web kiosk that recognizes the face, validates a blink, logs check-in/check-out with a voice confirmation, and an admin dashboard with color-coded absence/justified charts. Deployed with the backend on Render, frontend on Vercel, and database + storage on Supabase.",
+
+          tech: [
+            "Python",
+            "Flask",
+            "OpenCV",
+            "React",
+            "Supabase",
+            "PostgreSQL",
+            "Chart.js",
+          ],
+
+          github: "https://github.com/CodeWithAlli/Acceso_Facial",
+          demo: "https://acceso-facial.vercel.app/",
+        },
+
+        {
+          imageKey: "onpe",
+          featured: true,
+    
+          title: "ONPE Electoral Management System",
+    
+          description:
+            "Web platform for managing electoral processes, voter registry administration, users, auditing, and real-time statistics.",
+    
+          challenge:
+            "Design a secure and scalable architecture using Supabase, Edge Functions, and role-based access control to ensure electoral data integrity.",
+    
+          result:
+            "A centralized system capable of managing complete electoral processes with traceability, auditing, and administrative reporting was implemented.",
+    
+          tech: [
+            "React",
+            "TypeScript",
+            "Tailwind",
+            "Supabase",
+            "Edge Functions",
+            "PostgreSQL",
+          ],
+    
+          github: "https://github.com/CodeWithAlli/onpe-votaciones",
+          demo: "https://onpe-votaciones.vercel.app/votar",
+        },
+    
+        {
+          imageKey: "auraSpa",
+          featured: true,
+    
+          title: "Aura Spa – Wellness Sanctuary",
+    
+          description:
+            "Luxury spa website featuring wellness services, facial treatments, massages, and reservations.",
+    
+          challenge:
+            "Create a sophisticated and relaxing visual identity that reflects the spa's premium brand and builds user trust.",
+    
+          result:
+            "An elegant user experience was achieved through a natural color palette and smooth navigation that encourages service exploration.",
+    
+          tech: [
+            "React",
+            "Tailwind",
+            "TypeScript",
+            "Vercel",
+          ],
+    
+          github: "https://github.com/CodeWithAlli",
+          demo: "https://aura-spa-frontend.vercel.app/",
+        },
+    
+        {
+          imageKey: "abogados",
+          featured: false,
+    
+          title: "Law Firm Website",
+    
+          description:
+            "Professional website for a law firm showcasing services, legal team members, and contact information.",
+    
+          challenge:
+            "Design a professional and trustworthy interface that makes legal information easily accessible.",
+    
+          result:
+            "A simple navigation structure and clear presentation of legal services improved the overall user experience.",
+    
+          tech: [
+            "React",
+            "Tailwind",
+            "JavaScript",
+          ],
+    
+          github:
+            "https://github.com/CodeWithAlli/STAFF-ABOGADOS-DEFENDIENDO-LOS-DERECHOS",
+    
+          demo:
+            "https://codewithalli.github.io/STAFF-ABOGADOS-DEFENDIENDO-LOS-DERECHOS/",
+        },
+    
+        {
+          imageKey: "autoland",
+          featured: false,
+        
+          title: "AUTOLAND — Dealership Management",
+        
+          description:
+            "Internal admin panel for a car dealership, with inventory control, customer management, and sales negotiation tracking through a status-based board.",
+        
+          challenge:
+            "Migrate a legacy PHP/MySQL system to a modern React and Supabase architecture, preserving role-based security (admin/salesperson) and preventing overselling of inventory units.",
+        
+          result:
+            "A fully functional system with role-based authentication, row-level security (RLS), a Kanban-style negotiation board, and automatic inventory status syncing based on completed sales.",
+        
+          tech: [
+            "React",
+            "Supabase",
+            "PostgreSQL",
+            "Vite",
+          ],
+        
+          github: "https://github.com/CodeWithAlli/Autoland",
+          demo: "https://autoland-bice.vercel.app/login",
+        },
+      ],
+    },
+  },
+
+};

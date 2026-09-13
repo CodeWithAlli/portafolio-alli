@@ -120,9 +120,9 @@ const Navbar = () => {
               <Github size={18} />
             </a>
 
-            {/* Botón de Certificados Cisco (Diseño Dorado) */}
+            {/* Botón de Certificados Cisco (Corregido a /learner_transcript.pdf) */}
             <a
-              href="/portafolio-alli/learner_transcript.pdf"
+              href="/learner_transcript.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="px-3 py-2 rounded-lg border border-amber-400/40 bg-amber-500/10 text-amber-600 dark:text-amber-400 hover:bg-amber-500/20 hover:border-amber-400 transition-all flex items-center gap-1.5 text-sm font-medium shadow-sm"
@@ -131,9 +131,9 @@ const Navbar = () => {
               <Award size={16} className="text-amber-500" />
             </a>
 
-            {/* Botón Descargar CV */}
+            {/* Botón Descargar CV (Corregido a /cv-allison.pdf) */}
             <a
-              href="/portafolio-alli/cv-allison.pdf"
+              href="/cv-allison.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="gradient-bg text-primary-foreground px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90 transition-all flex items-center gap-2 shadow-sm hover:shadow-md"
@@ -205,9 +205,9 @@ const Navbar = () => {
                     <Github size={20} />
                   </a>
 
-                  {/* Certificados Móvil Dorado */}
+                  {/* Certificados Móvil (Corregido a /learner_transcript.pdf) */}
                   <a
-                    href="/portafolio-alli/learner_transcript.pdf"
+                    href="/learner_transcript.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 border border-amber-400/40 bg-amber-500/10 text-amber-600 dark:text-amber-400 hover:bg-amber-500/20 px-4 py-3 rounded-xl text-sm font-medium flex items-center gap-2 justify-center transition-all"
@@ -217,8 +217,9 @@ const Navbar = () => {
                   </a>
                 </div>
 
+                {/* Botón Descargar CV Móvil (Corregido a /cv-allison.pdf) */}
                 <a
-                  href="/portafolio-alli/cv-allison.pdf"
+                  href="/cv-allison.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full gradient-bg text-primary-foreground px-6 py-3 rounded-xl text-base font-medium flex items-center gap-2 justify-center shadow-sm hover:shadow-md transition-all"

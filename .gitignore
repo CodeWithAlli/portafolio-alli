@@ -10,7 +10,8 @@ lerna-debug.log*
 # Node modules
 node_modules/
 
-# Build folders (dist NO está ignorado)
+# Build output (Vercel lo generará en el servidor)
+dist/
 dist-ssr/
 
 # Local env files

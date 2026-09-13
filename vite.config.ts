@@ -3,9 +3,9 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
 export default defineConfig({
-  base: "/portafolio-alli/",
+  base: "/",
   server: {
-    host: "::", // hace que el servidor sea accesible desde cualquier IP
+    host: "::",
     port: 8080,
   },
   plugins: [react()],
@@ -15,6 +15,6 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: "docs", // <-- antes era 'dist', ahora GitHub Pages leerá desde aquí
+    outDir: "dist",
   },
 });

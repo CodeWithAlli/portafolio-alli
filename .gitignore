@@ -10,8 +10,7 @@ lerna-debug.log*
 # Node modules
 node_modules/
 
-# Build folders (except docs for GitHub Pages)
-dist/
+# Build folders (dist NO está ignorado)
 dist-ssr/
 
 # Local env files

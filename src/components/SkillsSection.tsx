@@ -12,10 +12,9 @@ import {
   SiFigma, SiGit, SiBootstrap,
   SiTensorflow, SiPytorch, SiScikitlearn,
   SiPostman, SiVercel, SiNetlify,
-  SiGraphql, SiSocketdotio,
-  SiRabbitmq, SiExpress, SiFastapi,
-  SiMongodb, SiDocker, SiRedis,
-  SiGooglecloud, SiPrisma
+  SiExpress, SiFastapi, SiDocker,
+  SiGooglecloud, SiAndroidstudio, SiGooglecolab,
+  SiRender, SiFlask, SiOpenjdk
 } from "@icons-pack/react-simple-icons";
 
 interface Skill {
@@ -24,44 +23,46 @@ interface Skill {
   color: string;
 }
 
+// 1. Tus Fuertes Principales
 const stackPrincipal: Skill[] = [
+  { name: "Android Studio", icon: SiAndroidstudio, color: "#3DDC84" },
+  { name: "Java", icon: SiOpenjdk, color: "#007396" },
   { name: "React", icon: SiReact, color: "#61DAFB" },
   { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
-  { name: "Tailwind", icon: SiTailwindcss, color: "#06B6D4" },
-  { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
-  { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
   { name: "Python", icon: SiPython, color: "#3776AB" },
+  { name: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
 ];
 
+// 2. Herramientas Web & Cloud de Trabajo Diario
 const tecnologias: Skill[] = [
-  { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
+  { name: "Vercel", icon: SiVercel, color: "#000000" },
+  { name: "Render", icon: SiRender, color: "#46E3B7" },
+  { name: "GitHub", icon: SiGithub, color: "#181717" },
+  { name: "Google Colab", icon: SiGooglecolab, color: "#F9AB00" },
+  { name: "Flask", icon: SiFlask, color: "#000000" },
+  { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
+  { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
   { name: "Vite", icon: SiVite, color: "#646CFF" },
   { name: "Git", icon: SiGit, color: "#F05032" },
-  { name: "GitHub", icon: SiGithub, color: "#181717" },
-  { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
-  { name: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
-  { name: "MySQL", icon: SiMysql, color: "#4479A1" },
-  { name: "Bootstrap", icon: SiBootstrap, color: "#7952B3" },
-  { name: "HTML", icon: SiHtml5, color: "#E34F26" },
-  { name: "CSS", icon: SiCss, color: "#1572B6" },
+  { name: "HTML5", icon: SiHtml5, color: "#E34F26" },
+  { name: "CSS3", icon: SiCss, color: "#1572B6" },
   { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
-  { name: "Figma", icon: SiFigma, color: "#F24E1E" },
 ];
 
+// 3. Tecnologías que sigues expandiendo / Explorando
 const explorando: Skill[] = [
-  { name: "GraphQL", icon: SiGraphql, color: "#E10098" },
-  { name: "Socket.IO", icon: SiSocketdotio, color: "#010101" },
-  { name: "FastAPI", icon: SiFastapi, color: "#009485" },
-  { name: "Express", icon: SiExpress, color: "#000000" },
-  { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
-  { name: "Docker", icon: SiDocker, color: "#2496ED" },
-  { name: "Redis", icon: SiRedis, color: "#DC382D" },
-  { name: "RabbitMQ", icon: SiRabbitmq, color: "#FF6600" },
-  { name: "Google Cloud", icon: SiGooglecloud, color: "#4285F4" },
-  { name: "Prisma", icon: SiPrisma, color: "#0C839B" },
+  { name: "Scikit-learn", icon: SiScikitlearn, color: "#F7931E" },
   { name: "TensorFlow", icon: SiTensorflow, color: "#FF6F00" },
   { name: "PyTorch", icon: SiPytorch, color: "#EE4C2C" },
-  { name: "Scikit-learn", icon: SiScikitlearn, color: "#F7931E" },
+  { name: "FastAPI", icon: SiFastapi, color: "#009485" },
+  { name: "Docker", icon: SiDocker, color: "#2496ED" },
+  { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
+  { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
+  { name: "MySQL", icon: SiMysql, color: "#4479A1" },
+  { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
+  { name: "Google Cloud", icon: SiGooglecloud, color: "#4285F4" },
+  { name: "Figma", icon: SiFigma, color: "#F24E1E" },
+  { name: "Postman", icon: SiPostman, color: "#FF6C37" },
 ];
 
 const SkillCard = ({ skill, locked = false }: { skill: Skill; locked?: boolean }) => (
@@ -130,8 +131,7 @@ const SkillsSection = () => {
           </p>
         </motion.div>
 
-
-        {/* STACK */}
+        {/* STACK PRINCIPAL */}
         <div className="mb-16">
           <h3 className="text-xl font-semibold mb-6 text-primary">
             {t.skills.mainStack}
@@ -139,15 +139,13 @@ const SkillsSection = () => {
           {renderGrid(stackPrincipal)}
         </div>
 
-
-        {/* TECNOLOGIAS */}
+        {/* TECNOLOGIAS & HERRAMIENTAS */}
         <div className="mb-16">
           <h3 className="text-xl font-semibold mb-6 text-foreground">
             {t.skills.technologies}
           </h3>
           {renderGrid(tecnologias)}
         </div>
-
 
         {/* EXPLORANDO */}
         <div>
@@ -169,8 +167,7 @@ const SkillsSection = () => {
 
                 <ChevronDown
                   size={16}
-                  className={`transition-transform ${showAll ? "rotate-180" : ""
-                    }`}
+                  className={`transition-transform ${showAll ? "rotate-180" : ""}`}
                 />
               </button>
             </div>

@@ -28,7 +28,7 @@ const AboutSection = () => {
   const stats = [
     {
       icon: Briefcase,
-      value: "1+",
+      value: "3+",
       label: t.about.stats.projects,
     },
     {

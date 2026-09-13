@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Github, Download } from "lucide-react";
+import { Menu, X, Github, Download, Award } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { useLanguage } from "@/context/LanguageContext";
@@ -7,7 +7,6 @@ import { translations } from "@/translations";
 
 const Navbar = () => {
   const { language, toggleLanguage } = useLanguage();
-
   const t = translations[language];
 
   const navLinks = [
@@ -27,16 +26,12 @@ const Navbar = () => {
     href: string
   ) => {
     e.preventDefault();
-
     const id = href.replace("#", "");
     const element = document.getElementById(id);
 
     if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-      });
+      element.scrollIntoView({ behavior: "smooth" });
     }
-
     setIsOpen(false);
   };
 
@@ -54,25 +49,17 @@ const Navbar = () => {
 
       for (const id of [...sections].reverse()) {
         const element = document.getElementById(id);
-
-        if (
-          element &&
-          element.getBoundingClientRect().top <= 100
-        ) {
+        if (element && element.getBoundingClientRect().top <= 100) {
           setActiveSection(id);
           break;
         }
       }
     };
 
-    window.addEventListener("scroll", handleScroll, {
-      passive: true,
-    });
-
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
 
-    return () =>
-      window.removeEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -81,9 +68,7 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "glass shadow-lg"
-          : "bg-transparent"
+        scrolled ? "glass shadow-lg" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto flex items-center justify-between h-16 md:h-20 px-4">
@@ -95,18 +80,15 @@ const Navbar = () => {
           &lt;CodeWithAlli /&gt;
         </a>
 
-        {/* Desktop Navigation */}
+        {/* NAVEGACIÓN ESCRITORIO */}
         <div className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => {
             const sectionId = link.href.replace("#", "");
-
             return (
               <a
                 key={link.href}
                 href={link.href}
-                onClick={(e) =>
-                  handleNavClick(e, link.href)
-                }
+                onClick={(e) => handleNavClick(e, link.href)}
                 className={`text-sm font-medium transition-colors hover:text-primary ${
                   activeSection === sectionId
                     ? "text-primary"
@@ -127,16 +109,29 @@ const Navbar = () => {
               {language === "es" ? "EN" : "ES"}
             </button>
 
+            {/* GitHub */}
             <a
               href="https://github.com/CodeWithAlli"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors p-2 -m-2 rounded-lg hover:bg-muted/50"
+              className="text-muted-foreground hover:text-primary transition-colors p-2 rounded-lg hover:bg-muted/50"
               aria-label="GitHub"
             >
               <Github size={18} />
             </a>
 
+            {/* Botón de Certificados Cisco (Diseño Dorado) */}
+            <a
+              href="/portafolio-alli/learner_transcript.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-2 rounded-lg border border-amber-400/40 bg-amber-500/10 text-amber-600 dark:text-amber-400 hover:bg-amber-500/20 hover:border-amber-400 transition-all flex items-center gap-1.5 text-sm font-medium shadow-sm"
+              title="Ver Certificaciones Cisco"
+            >
+              <Award size={16} className="text-amber-500" />
+            </a>
+
+            {/* Botón Descargar CV */}
             <a
               href="/portafolio-alli/cv-allison.pdf"
               target="_blank"
@@ -150,56 +145,35 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Menu Toggle */}
+        {/* Botón Menú Móvil */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden text-foreground p-2 rounded-lg hover:bg-muted/50 transition-colors"
           aria-label="Toggle navigation menu"
         >
-          {isOpen ? (
-            <X size={24} />
-          ) : (
-            <Menu size={24} />
-          )}
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* MENÚ MÓVIL */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{
-              opacity: 0,
-              height: 0,
-            }}
-            animate={{
-              opacity: 1,
-              height: "auto",
-            }}
-            exit={{
-              opacity: 0,
-              height: 0,
-            }}
-            transition={{
-              duration: 0.2,
-            }}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
             className="md:hidden glass border-t border-border"
           >
             <div className="container mx-auto py-6 px-4">
               <nav className="flex flex-col gap-2">
                 {navLinks.map((link) => {
-                  const sectionId = link.href.replace(
-                    "#",
-                    ""
-                  );
-
+                  const sectionId = link.href.replace("#", "");
                   return (
                     <a
                       key={link.href}
                       href={link.href}
-                      onClick={(e) =>
-                        handleNavClick(e, link.href)
-                      }
+                      onClick={(e) => handleNavClick(e, link.href)}
                       className={`text-base font-medium py-3 px-4 rounded-xl transition-all ${
                         activeSection === sectionId
                           ? "text-primary bg-primary/10"
@@ -212,32 +186,42 @@ const Navbar = () => {
                 })}
               </nav>
 
-              <div className="flex items-center gap-4 pt-6 mt-6 border-t border-border">
-                {/* Selector idioma móvil */}
-                <button
-                  onClick={toggleLanguage}
-                  className="px-4 py-3 rounded-xl border border-border text-sm font-medium hover:bg-muted/50 transition-all"
-                >
-                  {language === "es"
-                    ? "English"
-                    : "Español"}
-                </button>
+              <div className="flex flex-col gap-3 pt-6 mt-6 border-t border-border">
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={toggleLanguage}
+                    className="px-4 py-3 rounded-xl border border-border text-sm font-medium hover:bg-muted/50 transition-all"
+                  >
+                    {language === "es" ? "English" : "Español"}
+                  </button>
 
-                <a
-                  href="https://github.com/CodeWithAlli"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-primary transition-colors p-3 rounded-xl hover:bg-muted/50"
-                  aria-label="GitHub"
-                >
-                  <Github size={20} />
-                </a>
+                  <a
+                    href="https://github.com/CodeWithAlli"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors p-3 rounded-xl hover:bg-muted/50 border border-border"
+                    aria-label="GitHub"
+                  >
+                    <Github size={20} />
+                  </a>
+
+                  {/* Certificados Móvil Dorado */}
+                  <a
+                    href="/portafolio-alli/learner_transcript.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 border border-amber-400/40 bg-amber-500/10 text-amber-600 dark:text-amber-400 hover:bg-amber-500/20 px-4 py-3 rounded-xl text-sm font-medium flex items-center gap-2 justify-center transition-all"
+                  >
+                    <Award size={18} className="text-amber-500" />
+                    Certificados
+                  </a>
+                </div>
 
                 <a
                   href="/portafolio-alli/cv-allison.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 gradient-bg text-primary-foreground px-6 py-3 rounded-xl text-base font-medium flex items-center gap-2 justify-center shadow-sm hover:shadow-md transition-all"
+                  className="w-full gradient-bg text-primary-foreground px-6 py-3 rounded-xl text-base font-medium flex items-center gap-2 justify-center shadow-sm hover:shadow-md transition-all"
                   download
                 >
                   <Download size={16} />

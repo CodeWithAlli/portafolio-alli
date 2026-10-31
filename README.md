@@ -2,7 +2,7 @@
 
 Portafolio personal de **Allison More**, desarrolladora de software especializada en frontend y backend. Sitio bilingüe (español/inglés), con diseño responsivo y animaciones, construido con React + TypeScript.
 
-🔗 **Sitio en vivo:** https://codewithalli.github.io/portafolio-alli/
+🔗 **Sitio en vivo:** https://portafolio-alli.vercel.app/
 
 ## Proyectos destacados
 

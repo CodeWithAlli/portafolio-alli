@@ -51,15 +51,15 @@ const ContactSection = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4">
-          {t.contact.title}{" "}
-<span className="gradient-text">
-  {t.contact.titleHighlight}
-</span>
-{t.contact.titleEnd}
+            {t.contact.title}{" "}
+            <span className="gradient-text">
+              {t.contact.titleHighlight}
+            </span>
+            {t.contact.titleEnd}
           </h2>
 
-          <p className="text-muted-foreground text-center mb-16 max-w-md mx-auto">
-          {t.contact.description}
+          <p className="text-justified max-w-2xl mx-auto text-muted-foreground leading-relaxed">
+            {t.contact.description}
           </p>
         </motion.div>
 
@@ -77,7 +77,7 @@ const ContactSection = () => {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20">
               <span className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
               <span className="text-base font-bold text-green-600">
-              {t.contact.available}
+                {t.contact.available}
               </span>
             </div>
 
@@ -104,13 +104,13 @@ const ContactSection = () => {
                     </span>
 
                     <span className="text-xs text-muted-foreground block">
-                    {item.href.includes("mailto")
-  ? t.contact.email
-  : item.href.includes("wa.me")
-  ? t.contact.whatsapp
-  : item.href.includes("cv")
-  ? t.contact.resume
-  : t.contact.profile}
+                      {item.href.includes("mailto")
+                        ? t.contact.email
+                        : item.href.includes("wa.me")
+                          ? t.contact.whatsapp
+                          : item.href.includes("cv")
+                            ? t.contact.resume
+                            : t.contact.profile}
                     </span>
                   </div>
                 </a>

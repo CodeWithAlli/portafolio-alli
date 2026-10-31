@@ -79,7 +79,7 @@ const HeroSection = () => {
               {t.hero.subtitle}
             </p>
 
-            <p className="text-muted-foreground text-base sm:text-lg max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed">
+            <p className="text-justified max-w-2xl text-muted-foreground leading-relaxed">
               {t.hero.description}
             </p>
 

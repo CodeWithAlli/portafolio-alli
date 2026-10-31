@@ -157,4 +157,10 @@
   .section-padding {
     @apply py-20 md:py-28 px-4 md:px-8;
   }
+    /* Justificado profesional para párrafos largos */
+  .text-justified {
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+  }
 }

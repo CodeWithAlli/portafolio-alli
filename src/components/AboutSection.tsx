@@ -28,12 +28,12 @@ const AboutSection = () => {
   const stats = [
     {
       icon: Briefcase,
-      value: "3+",
+      value: "6+",
       label: t.about.stats.projects,
     },
     {
       icon: Clock,
-      value: "2+",
+      value: "5+",
       label: t.about.stats.learning,
     },
     {
@@ -43,7 +43,7 @@ const AboutSection = () => {
     },
     {
       icon: Code,
-      value: "1000+",
+      value: "10000+",
       label: t.about.stats.hours,
     },
   ];
@@ -82,7 +82,7 @@ const AboutSection = () => {
               </span>
             </h2>
 
-            <p className="text-muted-foreground max-w-md mx-auto">
+            <p className="text-justified text-muted-foreground leading-relaxed">
               {t.about.subtitle}
             </p>
           </motion.div>
@@ -96,11 +96,11 @@ const AboutSection = () => {
 
             {/* Short description */}
             <div className="space-y-4 text-muted-foreground leading-relaxed">
-              <p>
+              <p className="text-justified text-muted-foreground leading-relaxed">
                 {t.about.paragraph1}
               </p>
 
-              <p>
+              <p className="text-justified text-muted-foreground leading-relaxed">
                 {t.about.paragraph2}
               </p>
 

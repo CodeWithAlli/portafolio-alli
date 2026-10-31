@@ -126,7 +126,7 @@ const SkillsSection = () => {
             </span>
           </h2>
 
-          <p className="text-muted-foreground max-w-lg mx-auto">
+          <p className="text-justified max-w-3xl mx-auto text-muted-foreground leading-relaxed">
             {t.skills.description}
           </p>
         </motion.div>

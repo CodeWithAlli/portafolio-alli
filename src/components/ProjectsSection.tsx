@@ -9,6 +9,20 @@ import projectAccesoFacial from "@/assets/project-acceso-facial.jpg";
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/translations";
 
+type Project = {
+  imageKey: string;
+  featured: boolean;
+  title: string;
+  description: string;
+  challenge: string;
+  result: string;
+  competencies: string[]; // ← nueva
+  tech: string[];
+  github?: string;
+  demo?: string;
+  apk?: string;
+};
+
 const ProjectsSection = () => {
   const { language } = useLanguage();
   const t = translations[language];
@@ -25,8 +39,10 @@ const ProjectsSection = () => {
   };
 
   // Obtenemos el arreglo correspondiente según la pestaña elegida
-  const rawProjects =
-    activeTab === "web" ? t.projects.webProjects : t.projects.androidProjects;
+  const rawProjects: Project[] =
+    activeTab === "web"
+      ? (t.projects.webProjects as Project[])
+      : (t.projects.androidProjects as Project[]);
 
   // Asignamos la imagen correspondiente según imageKey
   const projects = rawProjects.map((project) => ({
@@ -53,7 +69,7 @@ const ProjectsSection = () => {
             </span>
           </h2>
 
-          <p className="text-muted-foreground text-center mb-10 max-w-2xl mx-auto">
+          <p className="text-justified max-w-3xl mx-auto text-muted-foreground leading-relaxed">
             {t.projects.description}
           </p>
         </motion.div>
@@ -68,8 +84,8 @@ const ProjectsSection = () => {
           <button
             onClick={() => setActiveTab("web")}
             className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${activeTab === "web"
-                ? "gradient-bg text-primary-foreground shadow-lg scale-105"
-                : "glass hover:border-primary/40 text-muted-foreground"
+              ? "gradient-bg text-primary-foreground shadow-lg scale-105"
+              : "glass hover:border-primary/40 text-muted-foreground"
               }`}
           >
             <Globe size={16} />
@@ -79,8 +95,8 @@ const ProjectsSection = () => {
           <button
             onClick={() => setActiveTab("android")}
             className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${activeTab === "android"
-                ? "gradient-bg text-primary-foreground shadow-lg scale-105"
-                : "glass hover:border-primary/40 text-muted-foreground"
+              ? "gradient-bg text-primary-foreground shadow-lg scale-105"
+              : "glass hover:border-primary/40 text-muted-foreground"
               }`}
           >
             <Smartphone size={16} />
@@ -165,33 +181,49 @@ const ProjectsSection = () => {
                 )}
               </div>
 
-              {/* Información y detalles del proyecto */}
+                           {/* Información y detalles del proyecto */}
               <div className="p-6 sm:p-8 flex flex-col justify-center">
                 <h3 className="text-xl sm:text-2xl font-bold mb-3">
                   {project.title}
                 </h3>
 
-                <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
+                <p className="text-justified text-muted-foreground leading-relaxed">
                   {project.description}
                 </p>
 
                 <div className="mb-4">
-                  <p className="text-xs font-semibold text-primary mb-1">
+                  <p className="text-sm font-bold text-blue-600 dark:text-blue-400 mb-1.5 uppercase tracking-wide">
                     {t.projects.challenge}
                   </p>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
+                  <p className="text-justified text-muted-foreground leading-relaxed">
                     {project.challenge}
                   </p>
                 </div>
 
                 <div className="mb-4">
-                  <p className="text-xs font-semibold text-green-500 mb-1">
+                  <p className="text-sm font-bold text-emerald-600 dark:text-emerald-400 mb-1.5 uppercase tracking-wide">
                     {t.projects.result}
                   </p>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
+                  <p className="text-justified text-muted-foreground leading-relaxed">
                     {project.result}
                   </p>
                 </div>
+
+                {/* Competencias adquiridas */}
+                {project.competencies && project.competencies.length > 0 && (
+                  <div className="mb-4">
+                    <p className="text-sm font-bold text-purple-600 dark:text-purple-400 mb-1.5 uppercase tracking-wide">
+                      {(t.projects as any).competencies}
+                    </p>
+                    <ul className="list-disc pl-5 space-y-1.5 text-sm text-muted-foreground">
+                      {project.competencies.map((comp, idx) => (
+                        <li key={idx} className="leading-relaxed">
+                          {comp}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
                 {/* Tecnologías */}
                 <div className="flex flex-wrap gap-2 mb-6">
